@@ -1,0 +1,19 @@
+html {
+    box-sizing: border-box;
+
+}
+
+*, ::after, ::before {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    min-height: 100vh;
+    margin: 0 auto;
+}
+#root {
+    
+    margin: 0 auto;
+}
