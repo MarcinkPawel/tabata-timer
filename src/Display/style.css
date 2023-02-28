@@ -1,0 +1,7 @@
+.screen {
+    max-width: 600px;
+    max-height: 600px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 4px;
+}

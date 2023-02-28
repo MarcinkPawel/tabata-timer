@@ -1,13 +1,11 @@
 import './App.css';
-import { Display } from './Display';
-import { SettingsMenu } from './SettingsMenu';
+import { Main } from './Main';
 
 
 function App() {
   return (
     <div className='dupa'>
-    <Display />
-    <SettingsMenu />
+      <Main />
     </div>
   );
 }
