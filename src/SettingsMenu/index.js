@@ -1,23 +1,36 @@
 import { useEffect, useState } from "react";
 import "../SettingsMenu/style.css";
-import ReactInputMask from "react-input-mask";
+
 
 export const SettingsMenu = () => {
   const [warmUp, setWarmUp] = useState(20);
   const [work, setWork] = useState(10);
   const [rest, setRest] = useState(20);
   const [sets, setSets] = useState(8);
-  const [total, setTotal] = useState(null);
+  const [total, setTotal] = useState("Time");
 
   function calculateSets(power, still, times) {
     const totalTime = ((parseInt(power) + parseInt(still)) * parseInt(times));
-    setTotal(totalTime);
+    const totalTimeToMinutes = (parseInt(totalTime) / 60).toFixed(2);
+    setTotal(totalTimeToMinutes);
     console.log(totalTime);
   }
 
   useEffect(() => {
     calculateSets(work, rest, sets);
   }, [work, rest, sets]);
+const workCopy = { ...work};
+
+  useEffect(() => {
+    let intervalId;
+    if (workCopy > 0) {
+      intervalId = setInterval(() => {
+        setWork((prevWork) => prevWork - 1);
+        console.log(workCopy)
+      }, 1000);
+    }
+    return () => clearInterval(intervalId);
+  }, [workCopy]);
 
 
 
@@ -47,7 +60,6 @@ export const SettingsMenu = () => {
             className="input"
             step="1"
             min="0"
-            value={work}
             onChange={(e) => setWork(e.target.value)}
           />
         </label>
